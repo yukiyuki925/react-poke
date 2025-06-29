@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import styles from "./Index.module.css";
+import Display from "../src/components/Display/Display";
 
 export default function IndexPage() {
   // ポケモン一覧配列
@@ -12,13 +14,21 @@ export default function IndexPage() {
   }, []);
 
   return (
-    <div>
-      {pokemonList.map((pokemon, index) => (
-        <div key={index}>
-          <p>{pokemon.name}</p>
-          <p>{pokemon.url}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className={styles.displayContainer}>
+        {pokemonList.map((pokemon) => {
+          const id = pokemon.url.split("/").filter(Boolean).pop();
+          const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+
+          return (
+            <Display
+              key={pokemon.name}
+              name={pokemon.name}
+              imageUrl={imageUrl}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
