@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Detail from "../src/components/DetailDisplay/DetailDisplay";
 
 export default function DetailPage() {
   const { name } = useParams();
@@ -15,20 +16,14 @@ export default function DetailPage() {
 
   return (
     <>
-      <div>
-        <h1>{pokemon.name}</h1>
-        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-        <p>Height: {pokemon.height / 10} m</p>
-        <p>Weight: {pokemon.weight / 10} kg</p>
-        <p>Types: {pokemon.types.map((t) => t.type.name).join(", ")}</p>
-        <ul>
-          {pokemon.stats.map((stat) => (
-            <li key={stat.stat.name}>
-              {stat.stat.name}: {stat.base_stat}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Detail
+        name={pokemon.name}
+        img={pokemon.sprites.front_default}
+        height={pokemon.height}
+        weight={pokemon.weight}
+        types={pokemon.types}
+        stats={pokemon.stats}
+      />
     </>
   );
 }
