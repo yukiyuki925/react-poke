@@ -3,3 +3,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
+
+.inputParent {
+  text-align: left;
+}
+
+.input {
+  margin-bottom: 10px;
+}

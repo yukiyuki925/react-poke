@@ -1,3 +1,5 @@
+import styles from "./DetailDisplay.module.css";
+
 export default function DetailPage({
   name,
   img,
@@ -15,7 +17,7 @@ export default function DetailPage({
       <p>Types: {types.map((t) => t.type.name).join(", ")}</p>
       <ul>
         {stats.map((stat) => (
-          <li key={stat.stat.name}>
+          <li key={stat.stat.name} className={styles.display}>
             {stat.stat.name}: {stat.base_stat}
           </li>
         ))}
